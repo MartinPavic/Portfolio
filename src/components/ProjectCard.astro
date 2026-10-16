@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/format';
+import Icon from './Icon.astro';
+import Tag from './Tag.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, summary, date, stack } = project.data;
+---
+
+<a
+  href={`/projects/${project.id}/`}
+  class="spotlight reveal group flex h-full flex-col rounded-2xl p-6"
+  data-spotlight
+>
+  <div class="relative flex items-start justify-between gap-4">
+    <p class="font-mono text-xs text-muted">{formatDate(date)}</p>
+    <Icon
+      name="arrow"
+      class="size-5 -rotate-45 text-muted transition group-hover:rotate-0 group-hover:text-accent"
+    />
+  </div>
+  <h3 class="relative mt-4 text-xl font-semibold tracking-tight">{title}</h3>
+  <p class="relative mt-2 flex-1 text-sm leading-relaxed text-muted">{summary}</p>
+  <ul class="relative mt-5 flex flex-wrap gap-2">
+    {stack.map((item) => <li><Tag>{item}</Tag></li>)}
+  </ul>
+</a>

@@ -1,0 +1,15 @@
+company: Sample Systems
+role: Software Engineer
+start: "2019-06"
+end: "2022-02"
+location: Zagreb
+summary: Built and operated backend services for a high-traffic B2B platform.
+highlights:
+  - Shipped a FastAPI service handling millions of requests per day.
+  - Introduced contract testing that removed an entire class of integration bugs.
+  - Owned CI/CD and containerised deployments for the whole team.
+stack:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - Docker

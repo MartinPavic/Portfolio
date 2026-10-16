@@ -1,0 +1,55 @@
+---
+import { getCollection, render } from 'astro:content';
+import Button from '../../components/Button.astro';
+import Icon from '../../components/Icon.astro';
+import Tag from '../../components/Tag.astro';
+import { profile } from '../../data/profile';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, summary, date, stack, repo, live } = project.data;
+---
+
+<BaseLayout title={`${title} | ${profile.name}`} description={summary}>
+  <article class="container-page max-w-3xl py-20 md:py-28">
+    <a href="/projects/" class="inline-flex items-center gap-2 font-mono text-sm text-muted transition-colors hover:text-accent">
+      <Icon name="arrow" class="size-4 rotate-180" /> All projects
+    </a>
+
+    <header class="mt-8">
+      <p class="font-mono text-xs text-muted">{formatDate(date)}</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">{title}</h1>
+      <p class="mt-4 text-lg leading-relaxed text-muted">{summary}</p>
+      <ul class="mt-6 flex flex-wrap gap-2">
+        {stack.map((item) => <li><Tag>{item}</Tag></li>)}
+      </ul>
+      {
+        (repo || live) && (
+          <div class="mt-8 flex flex-wrap gap-3">
+            {live && (
+              <Button href={live} external>
+                Live site <Icon name="external" class="size-4" />
+              </Button>
+            )}
+            {repo && (
+              <Button href={repo} variant="ghost" external>
+                <Icon name="github" class="size-4" /> Source
+              </Button>
+            )}
+          </div>
+        )
+      }
+    </header>
+
+    <div class="prose prose-invert prose-case-study mt-12 max-w-none prose-headings:tracking-tight">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

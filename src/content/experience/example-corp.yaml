@@ -1,0 +1,14 @@
+company: Example Corp
+role: Senior Software Engineer
+start: "2022-03"
+location: Remote
+summary: Lead engineer on the data platform powering analytics and customer-facing reporting.
+highlights:
+  - Redesigned the core PostgreSQL schema and cut p95 query latency by 70%.
+  - Led migration of batch pipelines from cron scripts to a typed Scala service.
+  - Mentored four engineers and introduced a lightweight design-review process.
+stack:
+  - Python
+  - Scala
+  - PostgreSQL
+  - TypeScript

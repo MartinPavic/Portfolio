@@ -1,0 +1,134 @@
+---
+import { getCollection } from 'astro:content';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Section from '../components/Section.astro';
+import Tag from '../components/Tag.astro';
+import { profile, skills } from '../data/profile';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatMonth } from '../lib/format';
+
+const featured = (await getCollection('projects', ({ data }) => data.featured && !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+const experience = (await getCollection('experience')).sort((a, b) =>
+  b.data.start.localeCompare(a.data.start),
+);
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <div class="hero-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+    <div class="hero-glow pointer-events-none absolute inset-0" aria-hidden="true"></div>
+
+    <div class="container-page relative pb-24 pt-24 md:pb-36 md:pt-36">
+      <p class="eyebrow">{profile.role}</p>
+      <h1 class="mt-5 max-w-3xl text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl">
+        Hi, I'm <span class="gradient-text">{profile.name.split(' ')[0]}</span>.
+        <br />
+        {profile.headline}
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{profile.intro}</p>
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        <Button href="/#projects">
+          View projects <Icon name="arrow" class="size-4 transition-transform group-hover:translate-x-0.5" />
+        </Button>
+        <Button href="/#contact" variant="ghost">Get in touch</Button>
+      </div>
+
+      <ul class="mt-14 flex flex-wrap gap-2">
+        {['Python', 'Scala', 'TypeScript', 'PostgreSQL'].map((tech) => <li><Tag>{tech}</Tag></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <Section id="about" eyebrow="01 / About" title="A bit about me">
+    <div class="reveal grid gap-6 md:max-w-3xl">
+      {profile.about.map((paragraph) => <p class="text-lg leading-relaxed text-muted">{paragraph}</p>)}
+    </div>
+  </Section>
+
+  <Section id="skills" eyebrow="02 / Skills" title="What I work with">
+    <div class="grid gap-4 sm:grid-cols-2">
+      {
+        skills.map((group) => (
+          <div class="spotlight reveal rounded-2xl p-6">
+            <h3 class="relative font-mono text-sm text-accent">{group.title}</h3>
+            <ul class="relative mt-4 flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <li>
+                  <Tag class="text-fg">{item}</Tag>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section id="experience" eyebrow="03 / Experience" title="Where I've worked">
+    <ol class="relative ml-2 border-l border-border">
+      {
+        experience.map(({ data }) => (
+          <li class="reveal relative pb-12 pl-8 last:pb-0">
+            <span class="absolute -left-[5px] top-2 size-2.5 rounded-full bg-accent ring-4 ring-bg" aria-hidden="true" />
+            <p class="font-mono text-xs text-muted">
+              {formatMonth(data.start)} &ndash; {data.end ? formatMonth(data.end) : 'Present'}
+              {data.location && <span> &middot; {data.location}</span>}
+            </p>
+            <h3 class="mt-2 text-xl font-semibold tracking-tight">
+              {data.role} <span class="text-muted">@ {data.company}</span>
+            </h3>
+            <p class="mt-2 max-w-2xl text-muted">{data.summary}</p>
+            <ul class="mt-4 max-w-2xl list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted marker:text-accent-strong">
+              {data.highlights.map((item) => <li>{item}</li>)}
+            </ul>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {data.stack.map((item) => <li><Tag>{item}</Tag></li>)}
+            </ul>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section id="projects" eyebrow="04 / Projects" title="Selected work">
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {featured.map((project) => <ProjectCard project={project} />)}
+    </div>
+    <div class="mt-10">
+      <Button href="/projects/" variant="ghost">
+        All projects <Icon name="arrow" class="size-4 transition-transform group-hover:translate-x-0.5" />
+      </Button>
+    </div>
+  </Section>
+
+  <Section id="contact" eyebrow="05 / Contact" title="Let's talk">
+    <div class="reveal max-w-2xl">
+      <p class="text-lg leading-relaxed text-muted">
+        Open to interesting projects and conversations. The quickest way to reach me is by email.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <Button href={`mailto:${profile.email}`}>
+          <Icon name="mail" class="size-4" /> {profile.email}
+        </Button>
+        <Button href={profile.github} variant="ghost" external>
+          <Icon name="github" class="size-4" /> GitHub
+        </Button>
+        <Button href={profile.linkedin} variant="ghost" external>
+          <Icon name="linkedin" class="size-4" /> LinkedIn
+        </Button>
+        {
+          profile.cv && (
+            <Button href={profile.cv} variant="ghost">
+              <Icon name="download" class="size-4" /> Download CV
+            </Button>
+          )
+        }
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

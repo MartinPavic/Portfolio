@@ -1,0 +1,52 @@
+---
+import { profile } from '../data/profile';
+
+const links = [
+  { href: '/#about', label: 'About' },
+  { href: '/#skills', label: 'Skills' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#projects', label: 'Projects' },
+  { href: '/#contact', label: 'Contact' },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-border/60 bg-bg/70 backdrop-blur-xl">
+  <nav class="container-page flex h-16 items-center justify-between" aria-label="Main">
+    <a href="/" class="font-mono text-sm font-medium tracking-tight">
+      <span class="text-accent">&gt;</span> {profile.name.toLowerCase().replace(/\s+/g, '.')}
+    </a>
+
+    <ul class="hidden items-center gap-8 text-sm text-muted md:flex">
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.href} class="transition-colors hover:text-fg">
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <details class="relative md:hidden">
+      <summary
+        class="cursor-pointer list-none rounded-md border border-border px-3 py-1.5 font-mono text-xs text-muted [&::-webkit-details-marker]:hidden"
+      >
+        menu
+      </summary>
+      <ul
+        class="absolute right-0 mt-3 w-48 rounded-xl border border-border bg-surface p-2 text-sm shadow-2xl"
+      >
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href} class="block rounded-lg px-3 py-2 text-muted hover:bg-white/5 hover:text-fg">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+  </nav>
+</header>
