@@ -7,7 +7,7 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   // TODO: replace with the real Cloudflare Pages / custom domain URL
-  site: 'https://martinpavic.pages.dev',
+  site: 'https://portfolio-1gc.pages.dev/',
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

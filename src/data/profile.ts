@@ -34,3 +34,42 @@ export const skills = [
     items: ['Astro', 'React', 'Tailwind CSS', 'Docker', 'CI/CD'],
   },
 ] as const;
+
+// TODO: adjust to the tools and practices you actually use.
+export const ai = {
+  intro:
+    'I use AI agents as a daily engineering tool, not a novelty. They speed up the work I would do anyway, while design decisions, review and accountability stay with me.',
+  tools: ['Claude', 'Claude Code', 'ChatGPT', 'GitHub Copilot', 'MCP'],
+  practices: [
+    {
+      title: 'Agentic coding workflows',
+      description:
+        'Plan, implement and verify loops with Claude Code and Copilot agent mode, steered by project instructions, reusable skills and custom agents.',
+    },
+    {
+      title: 'Spec and test driven prompting',
+      description:
+        'I write the spec and failing tests first, then let agents implement against them, so correctness is checked by code rather than by trust.',
+    },
+    {
+      title: 'MCP and tool integration',
+      description:
+        'Connecting agents to databases, docs, browsers and CI through the Model Context Protocol so they work with real context instead of guesses.',
+    },
+    {
+      title: 'Parallel sub-agents',
+      description:
+        'Delegating research, exploration and independent review to focused sub-agents, then merging and verifying the results myself.',
+    },
+    {
+      title: 'LLM-powered features',
+      description:
+        'Building product features on LLMs: structured output, retrieval over PostgreSQL, and evaluation suites that catch regressions.',
+    },
+    {
+      title: 'Human-in-the-loop guardrails',
+      description:
+        'Every diff is reviewed, secrets stay out of prompts, and nothing ships without tests, type checks and a security pass.',
+    },
+  ],
+} as const;
