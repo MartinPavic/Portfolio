@@ -1,0 +1,19 @@
+company: Gideon
+role: Robotics Software Engineer
+start: "2021-06"
+end: "2024-03"
+location: Zagreb
+summary: Started as a backend developer, then moved to fleet-management software for warehouse robots.
+highlights:
+  - Developed applications and libraries to manage a fleet of warehouse robots in Python with FastAPI, Pydantic and asyncio, and contributed to the system architecture.
+  - Designed several PostgreSQL databases and built multithreaded and multiprocess systems.
+  - Took over the three-component Over the Air (OTA) Update feature and significantly improved it on both frontend and backend.
+  - Wrote unit, functional and integration tests, automated them in CI/CD and verified software on real robots in a test warehouse.
+  - As a backend developer, built a Flask REST API on PostgreSQL, ran heavy asynchronous jobs with Celery and contributed to the Angular frontend.
+stack:
+  - Python
+  - FastAPI
+  - Flask
+  - PostgreSQL
+  - Celery
+  - Docker

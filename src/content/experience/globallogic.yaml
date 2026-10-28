@@ -1,0 +1,18 @@
+company: GlobalLogic
+role: Backend Software Engineer
+start: "2024-03"
+end: "2026-01"
+location: Zagreb
+summary: Backend engineer building Scala services inside a distributed system.
+highlights:
+  - Designed and maintained high-performance backend services in Scala with the Play Framework, improving reliability and scalability.
+  - Optimised PostgreSQL schemas and queries, reducing data access latency and raising overall throughput.
+  - Wrote unit and integration tests for every feature and automated builds and delivery with GitLab CI/CD.
+  - Deployed, monitored and scaled services on AWS for high availability and cost efficiency.
+  - Mentored junior developers on software design and code quality, and conducted technical interviews.
+stack:
+  - Scala
+  - Play Framework
+  - PostgreSQL
+  - AWS
+  - GitLab CI/CD

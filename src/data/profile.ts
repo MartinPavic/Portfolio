@@ -1,75 +1,89 @@
-// TODO: replace every placeholder value below with real details.
 export const profile = {
   name: 'Martin Pavić',
   role: 'Senior Software Engineer',
   headline: 'I build dependable backends, data systems and web apps.',
   intro:
-    'Senior software engineer with deep experience in Python, Scala, TypeScript and PostgreSQL. I care about clean architecture, performance you can measure, and software that is pleasant to operate.',
+    'Senior software engineer with 7+ years of experience in Python, Scala, TypeScript and PostgreSQL, based in Zagreb. I care about clean architecture, performance you can measure, and software that is pleasant to operate.',
   about: [
-    'I design and ship production systems end to end: from data modelling and APIs to the interfaces people actually use.',
-    'I enjoy untangling complex domains, mentoring teammates, and turning vague requirements into simple, maintainable solutions.',
+    'I own features end to end: schema design, APIs, testing, CI/CD and AWS deployment. My background spans REST services, asynchronous processing and robotics fleet management, and I now work full stack with React.',
+    'I mentor engineers, interview candidates, and turn vague requirements into simple, maintainable solutions.',
   ],
-  email: 'hello@example.com',
-  github: 'https://github.com/your-username',
-  linkedin: 'https://www.linkedin.com/in/your-username',
-  // Drop a file at public/cv.pdf and set this to '/cv.pdf' to show the download button.
-  cv: undefined as string | undefined,
+  email: 'martin.pavic97@gmail.com',
+  github: 'https://github.com/MartinPavic',
+  linkedin: 'https://www.linkedin.com/in/martin-pavic',
+  cv: '/cv.pdf' as string | undefined,
 } as const;
 
 export const skills = [
   {
     title: 'Languages',
-    items: ['Python', 'Scala', 'TypeScript', 'SQL'],
-  },
-  {
-    title: 'Data',
-    items: ['PostgreSQL', 'Query tuning', 'Schema design', 'Migrations'],
+    items: ['Python', 'Scala', 'TypeScript', 'SQL', 'Java', 'JavaScript', 'Dart'],
   },
   {
     title: 'Backend',
-    items: ['FastAPI', 'REST APIs', 'Async services', 'Testing'],
+    items: [
+      'FastAPI',
+      'Flask',
+      'Play Framework',
+      'http4s',
+      'Cats Effect',
+      'Celery',
+      'asyncio',
+      'Node.js',
+    ],
   },
   {
-    title: 'Web & Tooling',
-    items: ['Astro', 'React', 'Tailwind CSS', 'Docker', 'CI/CD'],
+    title: 'Data',
+    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'SQLAlchemy', 'Slick', 'Doobie'],
+  },
+  {
+    title: 'Frontend & mobile',
+    items: ['React', 'Angular', 'NgRx', 'Ionic', 'Flutter'],
+  },
+  {
+    title: 'Cloud & DevOps',
+    items: ['AWS', 'Docker', 'GitLab CI/CD', 'Nginx', 'Linux'],
+  },
+  {
+    title: 'Practices',
+    items: ['Clean architecture', 'Test automation', 'Code review', 'Mentoring'],
   },
 ] as const;
 
-// TODO: adjust to the tools and practices you actually use.
 export const ai = {
   intro:
-    'I use AI agents as a daily engineering tool, not a novelty. They speed up the work I would do anyway, while design decisions, review and accountability stay with me.',
-  tools: ['Claude', 'Claude Code', 'ChatGPT', 'GitHub Copilot', 'MCP'],
+    "I use AI coding agents a lot, and I've tried most of the popular ones while building my own projects. They're great at the slow parts: boilerplate, refactors, test scaffolding, finding my way around unfamiliar code. I still make the design calls and read everything before it ships.",
+  tools: ['Claude', 'Claude Code', 'ChatGPT', 'GitHub Copilot', 'and a few others'],
   practices: [
     {
-      title: 'Agentic coding workflows',
+      title: 'Built with agents',
       description:
-        'Plan, implement and verify loops with Claude Code and Copilot agent mode, steered by project instructions, reusable skills and custom agents.',
+        "Doer, ShipLog, Abracadabra and this site were all built with an agent in the loop. I describe what I want, let it draft, then review the diff like a teammate's pull request.",
     },
     {
-      title: 'Spec and test driven prompting',
+      title: 'Plan first',
       description:
-        'I write the spec and failing tests first, then let agents implement against them, so correctness is checked by code rather than by trust.',
+        'For anything bigger than a small fix, I have the agent write a plan before any code. A few of my repos keep an implementation plan file for exactly that.',
     },
     {
-      title: 'MCP and tool integration',
+      title: 'Tests catch the confident mistakes',
       description:
-        'Connecting agents to databases, docs, browsers and CI through the Model Context Protocol so they work with real context instead of guesses.',
+        "Agents sound sure even when they are wrong, so I lean on type checks, linters and tests. If I can't verify it, I don't trust it.",
     },
     {
-      title: 'Parallel sub-agents',
+      title: 'Right tool for the job',
       description:
-        'Delegating research, exploration and independent review to focused sub-agents, then merging and verifying the results myself.',
+        'Some agents are better at big refactors, others at quick questions. I switch between them instead of settling on one.',
     },
     {
-      title: 'LLM-powered features',
+      title: 'Building with LLMs',
       description:
-        'Building product features on LLMs: structured output, retrieval over PostgreSQL, and evaluation suites that catch regressions.',
+        'ShipLog calls OpenAI and Anthropic models to write reports from GitHub activity, and Abracadabra runs a coding agent and a reviewer agent on real issues.',
     },
     {
-      title: 'Human-in-the-loop guardrails',
+      title: 'Still my call',
       description:
-        'Every diff is reviewed, secrets stay out of prompts, and nothing ships without tests, type checks and a security pass.',
+        'Architecture, security and what actually gets merged stay with me. Secrets never go into a prompt.',
     },
   ],
 } as const;

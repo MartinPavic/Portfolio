@@ -1,0 +1,17 @@
+company: Digihey
+role: Full Stack Developer
+start: "2019-01"
+end: "2021-06"
+location: Zagreb
+summary: Full-stack developer working directly with a client in Switzerland on mobile and web products.
+highlights:
+  - Rewrote a legacy Angular/Ionic cross-platform app on the current stack with NgRx and released it to Google Play and the App Store.
+  - Rewrote a legacy Scala/Play backend to fit the mobile app and admin panel better, with less code and better performance.
+  - Built an Angular admin dashboard from scratch and upgraded two React/GatsbyJS (GraphQL) projects.
+  - Deployed servers with Nginx and Let's Encrypt SSL and automated routine work with shell scripts.
+stack:
+  - Angular
+  - Ionic
+  - Scala
+  - Play Framework
+  - React

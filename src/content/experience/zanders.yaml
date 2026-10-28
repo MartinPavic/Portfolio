@@ -1,0 +1,15 @@
+company: Zanders
+role: Senior Full Stack Software Engineer
+start: "2026-01"
+location: Zagreb
+summary: Full-stack engineer on a Python and React platform for financial and regulatory data.
+highlights:
+  - Build and maintain features across a FastAPI and SQLAlchemy backend and a React/TypeScript frontend (Vite, MUI).
+  - Integrate external regulatory and financial data sources (ESMA, EBA) into backend services through typed adapter contracts.
+  - Keep quality high with static analysis, type checking and automated tests enforced in CI.
+stack:
+  - Python
+  - FastAPI
+  - SQLAlchemy
+  - React
+  - TypeScript

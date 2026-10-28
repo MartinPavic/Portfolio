@@ -108,4 +108,4 @@ Every branch and pull request gets its own preview deployment.
 
 ## Notes
 
-Placeholder content (profile details, sample projects and jobs) is included and should be replaced with real information.
+Profile, experience and projects reflect the real CV, which is served from `public/cv.pdf`.

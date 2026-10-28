@@ -1,0 +1,28 @@
+---
+title: ShipLog
+summary: "A SaaS that turns GitHub activity into AI-written changelogs, standups and client reports."
+date: 2026-10-01
+tags: [SaaS, AI]
+stack: [Next.js, TypeScript, Postgres, Drizzle, Clerk, Stripe, OpenAI, Anthropic]
+repo: https://github.com/MartinPavic/ShipLog
+featured: true
+---
+
+## Overview
+
+ShipLog reads the commits, merged pull requests, closed issues and releases of your repositories and uses an AI model to write a ship log: a weekly update, changelog, standup, client report, release notes or investor update.
+
+## Features
+
+- Projects group the repositories behind one log, with a template, tone, audience and custom instructions
+- Streaming generation with OpenAI, Anthropic or Grok, using your own key or managed AI on the paid plan
+- Per-project history with search, pinned logs, version history and in-place regeneration
+- Read-only share links (optionally password protected) and a public changelog
+- Exports to Markdown, HTML and Slack, plus delivery to Slack, Discord and email on a weekly schedule
+- Teams through Clerk Organizations, and Stripe subscriptions with a customer portal
+
+## Engineering notes
+
+- Plan limits live in one module, and billing can be switched off with a single flag
+- A guided setup script creates the environment file, generates secrets, checks the database and applies migrations
+- Full documentation covers architecture, service setup, configuration and deployment

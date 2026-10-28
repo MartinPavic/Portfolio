@@ -1,0 +1,29 @@
+---
+title: Doer
+summary: "A daily task tracker with work and private profiles, reminders and Google Calendar sync, shipped as a web app and a macOS desktop app."
+date: 2026-10-01
+tags: [Full stack, Desktop]
+stack: [React, TypeScript, Hono, Cloudflare Workers, Neon Postgres, Drizzle, Tauri]
+repo: https://github.com/MartinPavic/Doer
+featured: true
+---
+
+## Overview
+
+Doer keeps work and private tasks apart with separate profiles, then gives both a shared calendar and reminder system. The web app and the macOS desktop app share one codebase and one account.
+
+## Features
+
+- Task profiles for work and private life, quick add, due dates, repeat rules and drag to reorder
+- Reminders with per-task lead times, quiet hours and snooze, using native notifications on desktop and Web Push on the web
+- A calendar view with recurring tasks expanded per occurrence, and Google Calendar events and mirroring
+- A floating always-on-top bubble on macOS for quick add
+- Offline use on desktop: reads fall back to a local SQLite cache and writes queue until the server is reachable
+
+## Architecture
+
+A pnpm and Turborepo monorepo. A React and Vite web shell and a Tauri 2 desktop shell both use shared UI and core packages, and talk over HTTPS to a Hono API on Cloudflare Workers backed by Neon Postgres. A cron trigger runs every minute for reminders, calendar sync and task mirroring.
+
+- Auth with Better Auth, schema and migrations with Drizzle
+- Shared zod schemas, TanStack Query hooks and recurrence logic in one core package
+- Google refresh tokens encrypted at rest

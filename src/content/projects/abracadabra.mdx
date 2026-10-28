@@ -1,0 +1,29 @@
+---
+title: Abracadabra
+summary: "A desktop app that turns assigned GitLab and GitHub issues into reviewed branches using a worker and reviewer coding-agent pipeline."
+date: 2026-10-01
+tags: [AI, Desktop]
+stack: [Tauri, Rust, React, TypeScript, Tailwind CSS]
+repo: https://github.com/MartinPavic/Abracadabra
+featured: true
+---
+
+## Overview
+
+Abracadabra fetches the issues assigned to you, runs an automated coding-agent pipeline against them on a new branch, and presents the result for approval, with minimal manual effort.
+
+## How it works
+
+1. Read the issue description, comments and acceptance criteria
+2. A worker agent implements the task in an isolated git worktree
+3. A reviewer agent checks the changes against the issue
+4. The app prepares the branch and commits, then shows a point-by-point summary
+5. You approve, discard, send feedback for an automatic redo, or open the branch to finish it manually
+
+## Design decisions
+
+- The agent engine is a configurable CLI command, so it is not tied to one vendor
+- Git operations shell out to the system `git`, with no extra library
+- Provider access sits behind an abstraction, starting with GitLab and with GitHub added next
+- Tokens are stored in the OS keychain rather than a config file
+- A Rust backend exposes typed commands to a React and Vite frontend
